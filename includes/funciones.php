@@ -1,10 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/**
- * Archivo: funciones.php
- * Descripción: Contiene funciones comunes y reutilizables de AulaFix.
- */
 
 /**
  * Escapa un valor antes de mostrarlo en HTML.
