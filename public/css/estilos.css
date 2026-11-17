@@ -1,0 +1,799 @@
+
+/* =========================================================
+   AULAFIX - DARK NEON PURPLE
+   Hoja de estilos principal
+   Diseño responsive para gestión de incidencias
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+:root {
+    --fondo: #101016;
+    --fondo-secundario: #15151e;
+    --superficie: #1b1b27;
+    --superficie-hover: #242435;
+
+    --morado: #8b5cf6;
+    --morado-hover: #7c3aed;
+    --morado-claro: #a78bfa;
+    --morado-suave: rgba(139, 92, 246, 0.12);
+    --morado-borde: rgba(139, 92, 246, 0.35);
+
+    --texto: #f4f4f5;
+    --texto-secundario: #a1a1aa;
+    --texto-tenue: #71717a;
+
+    --borde: #30303d;
+
+    --verde: #34d399;
+    --amarillo: #fbbf24;
+    --rojo: #fb7185;
+    --azul: #60a5fa;
+
+    --radio: 14px;
+    --radio-pequeno: 9px;
+
+    --sombra: 0 12px 35px rgba(0, 0, 0, 0.25);
+    --transicion: 0.2s ease;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            ellipse at 50% -20%,
+            rgba(139, 92, 246, 0.12),
+            transparent 55%
+        ),
+        var(--fondo);
+
+    color: var(--texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+a {
+    color: var(--morado-claro);
+    text-decoration: none;
+    transition: var(--transicion);
+}
+
+
+a:hover {
+    color: #c4b5fd;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   2. CABECERA Y NAVEGACIÓN
+   ========================================================= */
+
+header {
+    min-height: 76px;
+    padding: 15px 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    background: rgba(21, 21, 30, 0.92);
+    border-bottom: 1px solid var(--borde);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    backdrop-filter: blur(15px);
+}
+
+
+header h1 {
+    color: var(--texto);
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+
+header h1::before {
+    content: "";
+    display: inline-block;
+
+    width: 9px;
+    height: 9px;
+    margin-right: 10px;
+
+    background: var(--morado);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--morado);
+    vertical-align: middle;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+nav > a {
+    padding: 9px 14px;
+    border-radius: var(--radio-pequeno);
+
+    color: var(--texto-secundario);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+nav > a:hover {
+    background: var(--morado-suave);
+    color: var(--morado-claro);
+}
+
+
+nav span {
+    color: var(--texto-secundario);
+    font-size: 13px;
+    padding: 7px 12px;
+
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+}
+
+
+nav form {
+    margin: 0;
+}
+
+
+/* =========================================================
+   3. CONTENIDO PRINCIPAL
+   ========================================================= */
+
+main {
+    width: min(1200px, 90%);
+    min-height: calc(100vh - 150px);
+
+    margin: 0 auto;
+    padding: 45px 0 65px;
+}
+
+
+main h1 {
+    margin-bottom: 10px;
+    font-size: clamp(27px, 4vw, 36px);
+    font-weight: 750;
+    letter-spacing: -1px;
+}
+
+
+main h2 {
+    margin-bottom: 18px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+
+main p {
+    color: var(--texto-secundario);
+}
+
+
+.panel-incidencias > p:first-of-type {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   4. TARJETAS Y PANELES
+   ========================================================= */
+
+.panel-incidencias,
+.filtros-incidencias,
+.orden-incidencias,
+.tabla-incidencias,
+#resumen-incidencias,
+main > section:not(.panel-incidencias) {
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+
+#resumen-incidencias {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+
+    padding: 22px;
+    margin: 25px 0;
+}
+
+
+#resumen-incidencias h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+}
+
+
+#resumen-incidencias > div {
+    padding: 19px 15px;
+
+    background: var(--fondo-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 11px;
+
+    transition: var(--transicion);
+}
+
+
+#resumen-incidencias > div:hover {
+    border-color: var(--morado-borde);
+    transform: translateY(-3px);
+}
+
+
+#resumen-incidencias > div p {
+    margin-bottom: 8px;
+    color: var(--texto-secundario);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+#resumen-incidencias > div span {
+    display: block;
+    color: var(--morado-claro);
+    font-size: 29px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   5. BOTONES
+   ========================================================= */
+
+button,
+input[type="submit"] {
+    min-height: 42px;
+    padding: 10px 18px;
+
+    background: var(--morado);
+    color: white;
+
+    border: 1px solid var(--morado);
+    border-radius: var(--radio-pequeno);
+
+    font-weight: 700;
+    transition: var(--transicion);
+}
+
+
+button:hover,
+input[type="submit"]:hover {
+    background: var(--morado-hover);
+    border-color: var(--morado-hover);
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.25);
+    transform: translateY(-1px);
+}
+
+
+button:active,
+input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+
+nav button {
+    min-height: 36px;
+    padding: 7px 13px;
+    font-size: 12px;
+}
+
+
+.panel-incidencias > p a,
+main > p a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 17px;
+
+    background: var(--morado-suave);
+    color: var(--morado-claro);
+
+    border: 1px solid var(--morado-borde);
+    border-radius: var(--radio-pequeno);
+
+    font-weight: 700;
+}
+
+
+.panel-incidencias > p a:hover,
+main > p a:hover {
+    background: var(--morado);
+    color: white;
+}
+
+
+/* =========================================================
+   6. FILTROS Y ORDENACIÓN
+   ========================================================= */
+
+.filtros-incidencias,
+.orden-incidencias {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 22px;
+    margin: 22px 0;
+}
+
+
+.filtros-incidencias h2,
+.orden-incidencias h2 {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 7px;
+
+    color: var(--texto-secundario);
+    font-size: 13px;
+    font-weight: 650;
+}
+
+
+.filtros-incidencias label,
+.orden-incidencias label {
+    margin: 0;
+}
+
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 13px;
+
+    background: var(--fondo-secundario);
+    color: var(--texto);
+
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-pequeno);
+
+    outline: none;
+    transition: var(--transicion);
+}
+
+
+.filtros-incidencias input {
+    flex: 1 1 220px;
+}
+
+
+.filtros-incidencias select,
+.orden-incidencias select {
+    width: auto;
+    min-width: 150px;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--morado);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.13);
+}
+
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--texto-tenue);
+}
+
+
+select option {
+    background: var(--superficie);
+    color: var(--texto);
+}
+
+
+/* =========================================================
+   7. TABLA DE INCIDENCIAS
+   ========================================================= */
+
+.tabla-incidencias {
+    padding: 22px;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+
+.tabla-incidencias h2 {
+    margin-bottom: 22px;
+}
+
+
+.tabla-incidencias table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+
+.tabla-incidencias thead {
+    background: var(--fondo-secundario);
+}
+
+
+.tabla-incidencias th {
+    padding: 15px 12px;
+
+    color: var(--morado-claro);
+    font-size: 12px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    border-bottom: 1px solid var(--morado-borde);
+}
+
+
+.tabla-incidencias td {
+    padding: 15px 12px;
+
+    color: var(--texto-secundario);
+    font-size: 13px;
+
+    border-bottom: 1px solid var(--borde);
+}
+
+
+.tabla-incidencias tbody tr {
+    transition: var(--transicion);
+}
+
+
+.tabla-incidencias tbody tr:hover {
+    background: rgba(139, 92, 246, 0.07);
+}
+
+
+.tabla-incidencias tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.tabla-incidencias td a {
+    color: var(--morado-claro);
+    font-weight: 750;
+}
+
+
+.tabla-incidencias td a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   8. ESTADOS Y PRIORIDADES
+   ========================================================= */
+
+.estado,
+.prioridad {
+    display: inline-block;
+    padding: 5px 10px;
+
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+
+.abierta,
+.alta {
+    color: var(--rojo);
+    background: rgba(251, 113, 133, 0.12);
+}
+
+
+.en_curso,
+.media {
+    color: var(--amarillo);
+    background: rgba(251, 191, 36, 0.12);
+}
+
+
+.resuelta,
+.baja {
+    color: var(--verde);
+    background: rgba(52, 211, 153, 0.12);
+}
+
+
+/* =========================================================
+   9. FORMULARIOS
+   ========================================================= */
+
+form:not(nav form) {
+    margin: 20px 0;
+}
+
+
+form > div {
+    margin-bottom: 18px;
+}
+
+
+form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+
+form input[type="checkbox"] {
+    width: auto;
+    min-height: auto;
+    accent-color: var(--morado);
+}
+
+
+form button {
+    margin-top: 8px;
+}
+
+
+.error,
+.mensaje-error {
+    padding: 12px 15px;
+    margin: 12px 0;
+
+    color: var(--rojo);
+    background: rgba(251, 113, 133, 0.09);
+
+    border: 1px solid rgba(251, 113, 133, 0.25);
+    border-radius: var(--radio-pequeno);
+}
+
+
+.mensaje-exito {
+    padding: 13px 16px;
+    margin: 15px 0;
+
+    color: var(--verde);
+    background: rgba(52, 211, 153, 0.09);
+
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: var(--radio-pequeno);
+}
+
+
+/* =========================================================
+   10. DETALLE DE INCIDENCIA E HISTORIAL
+   ========================================================= */
+
+main > section {
+    padding: 25px;
+    margin-bottom: 24px;
+}
+
+
+main dl {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 12px;
+}
+
+
+main dt {
+    color: var(--texto-secundario);
+    font-weight: 700;
+}
+
+
+main dd {
+    color: var(--texto);
+    overflow-wrap: anywhere;
+}
+
+
+main ul {
+    padding-left: 22px;
+}
+
+
+main li {
+    margin-bottom: 12px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   11. PIE DE PÁGINA
+   ========================================================= */
+
+footer {
+    padding: 22px 6%;
+
+    background: var(--fondo-secundario);
+    border-top: 1px solid var(--borde);
+
+    color: var(--texto-tenue);
+    text-align: center;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   12. ESTADOS DE INTERACCIÓN
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--morado-claro);
+    outline-offset: 3px;
+}
+
+
+::selection {
+    background: var(--morado);
+    color: white;
+}
+
+
+/* =========================================================
+   13. RESPONSIVE - TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #resumen-incidencias {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    main {
+        width: 94%;
+    }
+
+    .tabla-incidencias {
+        overflow-x: auto;
+    }
+
+    .tabla-incidencias table {
+        min-width: 760px;
+    }
+
+}
+
+
+/* =========================================================
+   14. RESPONSIVE - MÓVILES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 15px 5%;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 5px;
+    }
+
+    nav > a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    nav span {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    main {
+        width: 92%;
+        padding: 30px 0 45px;
+    }
+
+    main h1 {
+        font-size: 27px;
+    }
+
+    #resumen-incidencias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 15px;
+        gap: 10px;
+    }
+
+    #resumen-incidencias > div {
+        padding: 14px 11px;
+    }
+
+    #resumen-incidencias > div span {
+        font-size: 24px;
+    }
+
+    .filtros-incidencias,
+    .orden-incidencias {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 17px;
+    }
+
+    .filtros-incidencias input,
+    .filtros-incidencias select,
+    .orden-incidencias select {
+        width: 100%;
+    }
+
+    .tabla-incidencias {
+        padding: 15px;
+    }
+
+    main dl {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    main dd {
+        margin-bottom: 12px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+
+}
