@@ -47,11 +47,28 @@ $incidencias = [
     ]
 ];
 
-?>
+    // Convertir las incidencias a JSON de forma segura.
+    $jsonIncidencias = json_encode(
+        $incidencias,
+         JSON_HEX_TAG |
+         JSON_HEX_APOS |
+         JSON_HEX_AMP |
+         JSON_HEX_QUOT |
+         JSON_UNESCAPED_UNICODE |
+         JSON_THROW_ON_ERROR
+     );
+
+    ?>
 
 <h2>Listado de incidencias</h2>
 
 <p>Bienvenido al panel de incidencias de AulaFix.</p>
+
+<!-- Datos JSON para el módulo JavaScript. -->
+<script id="datos-incidencias" type="application/json"><?= $jsonIncidencias ?></script>
+
+<!-- Cargar el módulo principal de JavaScript. -->
+<script type="module" src="js/main.js"></script>
 
 <h3>Incidencias registradas</h3>
 
